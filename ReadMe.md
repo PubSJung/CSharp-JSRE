@@ -3,7 +3,7 @@
 <head>
   ...
 
-  <script type="text/javascript" src="https://raw.githubusercontent.com/PubSJung/CSharp-JSRE/main/cs-jsre.js"> </script>
+  <script type="text/javascript" src="https://pubsjung.github.io/CSharp-JSRE/cs-jsre.js"> </script>
   ...
 
   <!-- Your Mainclass with a static Mainfunction -->
