@@ -1,0 +1,4 @@
+<Namespace Name="SJung.JSREExample">
+  <SourceIdentity File="Example.cs" /> 
+  <NamespaceEntry Name="SJung.JSREExample.Subspace" />
+</Namespace>

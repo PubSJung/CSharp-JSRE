@@ -1,7 +1,7 @@
 
 /*
   Effyiexs CSharp-JavaScriptRuntimeEnvironment
-  v0.0.1
+  v0.0.1.1
 */
 
 class CSNamespace {
@@ -44,10 +44,12 @@ class CSNamespace {
 
 class CSInstance {
 
-  constructor(modifiers, type, value) {
+  constructor(modifiers, type, name, value) {
     this.modifiers = modifiers;
+    this.name = name;
     this.type = type;
     this.value = value;
+    this.instances = {};
   }
 
   setInstancePath(path) {
@@ -68,24 +70,24 @@ class CSInstance {
 
 class CSClass extends CSInstance {
 
-  constructor(modifiers) {
-    super(modifiers, "class", {
-      constructors: [],
-      instances: {}
-    });
+  constructor(modifiers, name) {
+    super(modifiers, "class");
+    this.name = name;
+    this.constructors = [];
   }
 
 }
 
 class CSFunction extends CSInstance {
 
-  constructor(modifiers, params, body, returnType) {
+  constructor(modifiers, name, params, body, returnType) {
     super(modifiers, returnType ? returnType : "void", body);
+    this.name = name;
     this.body = body;
     this.params = params;
   } 
 
-  call(accessPath, sender, params) {
+  call(accessPath, calledInstance, params) {
 
     var paramStr = "";
     if(params && params.length > 0) {
@@ -94,7 +96,7 @@ class CSFunction extends CSInstance {
       paramStr = paramStr.slice(0, -2);
     }
 
-    if(sender || this.modifiers.includes("static")) // (TODO): Check if sender is valid
+    if(calledInstance || this.modifiers.includes("static")) // (TODO): Check if sender is valid
     if(this.checkVisibility(accessPath)) {
       var output;
       eval("output = this.value(" + paramStr + ");");
