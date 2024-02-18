@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs-entry>
+  <cs-run class="SJung.JSREExample.Example" />
+  <cs-root>
+    <namespace route="SJung.JSREExample">
+      <source file="Example.cs" />
+      <namespace route="SJung.JSREExample.Subspace">
+        <source file="SubExample.cs" />
+      </namespace>
+    </namespace>
+  </cs-root>
+</cs-entry>
